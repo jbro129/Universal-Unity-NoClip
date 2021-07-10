@@ -127,7 +127,7 @@ As long as the game uses CharacterController to handle player movement, state, a
 
 You can look at all file used for il2cpp [here](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/il2cpp)
 
-You can see this NoClip in effect in my YouTube video here:
+You can see this NoClip in effect in my YouTube video:
 
 [![Walk Through Walls In PG3D!! - Pixel Gun 3D NoClip Mod](https://img.youtube.com/vi/beXkuC7zr9M/hqdefault.jpg)](https://www.youtube.com/watch?v=beXkuC7zr9M)
 
@@ -144,7 +144,7 @@ Navigate to the UpdateEffects function inside of the Player_move_c class inside 
 
 The function should look like this: 
 
-![UpdateEffects original](/Previews/original.png)
+![UpdateEffects original](/Previews/mono-original.png)
 
 
 Again, just like in the il2cpp section, we figured out that we can access PG3D's CharacterController via UpdateEffects -> mySkinName -> firstPersonControl -> character.
@@ -159,11 +159,13 @@ Use ```this``` to get the Player_move_c instance, use the ```mySkinName``` field
 
 From there we can access the CharacterController's radius method and use the setter to set the radius value to ```float.PositiveInfinity```.
 
-![UpdateEffects modified](/Previews/modified.png)
+![UpdateEffects modified](/Previews/mono-modified.png)
 
 Save your changes, save the DLL, and use the modified DLL inside your mod. (Your player will be in a constant state of NoClip so you might want to do something about that)
 
 Just like that we have achieved NoClip in mono. 
+
+You can look at all file used for mono [here](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/mono)
 
 Big thanks to [ArcyMods](https://github.com/ArcyMods) for helping and testing and verifying this mono method.
 
