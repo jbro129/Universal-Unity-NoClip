@@ -1,3 +1,4 @@
 *.py linguist-detectable=false
 *.cs linguist-detectable=false
 *.txt linguist-detectable=false
+*.dll linguist-detectable=false
