@@ -131,10 +131,6 @@ I am sure there are other better ways of implementing a way to go back and forth
 
 That is how to create NoClip in unity il2cpp. Obviously every game is different. I could've hooked into FirstPersonControlSharp.Update() and set the radius there, but that would require an extra hook, which I didn't want to do.
 
-This way of implementing NoClip does not stop the game from checking to see if you are clipping, bypassing that would require something else and this tutorial isn't meant to provide a bypass.
-
-As long as the game uses CharacterController to handle player movement, state, and collision then this should work, regardless of what classes or code is in between.
-
 You can look at all the files used for this il2cpp method [here](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/il2cpp)
 
 You can see this NoClip in effect in my YouTube video:
