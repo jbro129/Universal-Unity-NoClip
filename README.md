@@ -135,7 +135,7 @@ You can look at all the files used for this il2cpp method [here](https://github.
 
 You can see this NoClip in effect in my YouTube video:
 
-[![Walk Through Walls In PG3D!! - Pixel Gun 3D NoClip Mod](https://img.youtube.com/vi/beXkuC7zr9M/hqdefault.jpg)](https://www.youtube.com/watch?v=beXkuC7zr9M)
+[![IL2CPP Preview and YouTube video](/Previews/il2cpp.gif)](https://www.youtube.com/watch?v=beXkuC7zr9M)
 
 
 ## Mono
@@ -171,8 +171,7 @@ Save your changes, save the DLL, and use the modified DLL inside your mod. (Your
 
 You can look at all the files used for this mono method [here](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/mono)
 
-Big thanks to [ArcyMods](https://github.com/ArcyMods) for helping and testing and verifying this mono method.
+Big thanks to [ArcyMods](https://github.com/ArcyMods) for helping, testing, and verifying this mono method.
 
-*Mono preview in progress*
-
+![Mono Preview](/Previews/mono.gif)
 
