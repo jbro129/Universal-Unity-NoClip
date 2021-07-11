@@ -1,11 +1,21 @@
 # Universal-Unity-NoClip
 This projects aim to show how a NoClip mod can be created in any unity game, regardless if its using an il2cpp or mono back-end.
 
+- [Il2CPP](https://github.com/jbro129/Universal-Unity-NoClip#il2cpp)
+- [Mono](https://github.com/jbro129/Universal-Unity-NoClip#mono)
+
+## Disclaimer
+
+This way of implementing NoClip **does not** stop the game from checking to see if you are clipping, bypassing that would require something else and this tutorial isn't meant to provide a bypass.
+
+As long as the game uses CharacterController to handle player movement, state, and collision then this should NoClip tutorial will work, regardless of what classes or code is in between.
+
 ## Requirements
+
  - The game uses [CharacterController](https://docs.unity3d.com/ScriptReference/CharacterController.html) to control player movement and state.
  - You have to be able to use the [set_radius](https://docs.unity3d.com/ScriptReference/CharacterController-radius.html) function within the CharacterController class. If that method is stripped from your dump then you are out of luck.
- 
- ## Il2CPP
+
+## Il2CPP
  
 For this example I am going to be using PG3D v16.6.1. PG3D uses CharacterController to handle everything player related. **This example applies only to PG3D, other games may implement CharacterController differently.**
 
@@ -23,7 +33,7 @@ One of the classes that use FirstPersonControllerCSharp is the SkinName class. O
 
 Now that we have found a class that is using FirstPersonControllerCSharp, we have to find a class, field, or method that is using that class. We have to repeat this until we find a way to access said function from our hook. It could be via a static class pointer or through a method or field.
 
-For PG3D's case,  I can access SkinName from my initial hook. Player_move_c has a field that uses SkinName, on line 145297 of [dump.cs](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/il2cpp/Dump/dump.cs) `internal SkinName mySkinName; // 0x320`.
+For PG3D's case, I can access SkinName from my initial hook. Player_move_c has a field that uses SkinName, on line 145297 of [dump.cs](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/il2cpp/Dump/dump.cs) `internal SkinName mySkinName; // 0x320`.
 
 Now that we have a way to access CharacterController from our hook, we need to implement a way to access it.
 
@@ -56,7 +66,7 @@ void (*CharacterController_set_radius)(void* character, float radius) = (void (*
 
 In order to make the player clip, we will need to set the CharacterController's radius to infinity. Unity does not know how to handle a CharacterController with an infinite radius which results in your player clipping through all walls.
 
-The C# code of this is `this.mySkinName.firstPersonControl.character.radius = INFINITY`
+The C# code of this is `this.mySkinName.firstPersonControl.character.radius = float.PositiveInfinity`
 
 Lets put this all together.
 
@@ -125,7 +135,7 @@ This way of implementing NoClip does not stop the game from checking to see if y
 
 As long as the game uses CharacterController to handle player movement, state, and collision then this should work, regardless of what classes or code is in between.
 
-You can look at all file used for il2cpp [here](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/il2cpp)
+You can look at all the files used for this il2cpp method [here](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/il2cpp)
 
 You can see this NoClip in effect in my YouTube video:
 
@@ -163,12 +173,10 @@ From there we can access the CharacterController's radius method and use the set
 
 Save your changes, save the DLL, and use the modified DLL inside your mod. (Your player will be in a constant state of NoClip so you might want to do something about that)
 
-Just like that we have achieved NoClip in mono. 
-
-You can look at all file used for mono [here](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/mono)
+You can look at all the files used for this mono method [here](https://github.com/jbro129/Universal-Unity-NoClip/blob/main/mono)
 
 Big thanks to [ArcyMods](https://github.com/ArcyMods) for helping and testing and verifying this mono method.
 
-*Preview in progress*
+*Mono preview in progress*
 
 
